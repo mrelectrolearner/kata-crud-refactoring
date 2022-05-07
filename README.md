@@ -1,8 +1,6 @@
 # [Problema]
 
-Pueden ver los siguientes videos para poder comprender la base del código fuente dentro de este repositorio. 
-
-https://www.youtube.com/watch?v=vqWvGgx_iXY&list=PL0IrPQPrkqoEUDXn1nsjzxSX2zflWtJW-
+A continuacion se presenta la solucion al reto final del ciclo de desarrollo web del trainning de sofkaU. Se partio del crud realizado en https://github.com/Sofka-XT/kata-crud-refactoring.
 
 ## KATA Full Stack
 
