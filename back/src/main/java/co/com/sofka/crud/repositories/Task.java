@@ -14,9 +14,11 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="task_id", unique = true, nullable = false)
     private Long id;
-    @Column(name="task")
-    private String task;
+    @Column(name="name")
+    private String name;
     @Column(name="completed")
     private boolean isCompleted;
+    @Column(name="todo_id")
+    private Long todoId;
 
 }

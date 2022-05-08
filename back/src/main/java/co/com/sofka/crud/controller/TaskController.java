@@ -2,6 +2,7 @@ package co.com.sofka.crud.controller;
 
 import co.com.sofka.crud.repositories.Task;
 import co.com.sofka.crud.services.TaskService;
+import co.com.sofka.crud.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
@@ -11,15 +12,20 @@ public class TaskController {
 
     @Autowired
     private TaskService service;
+    @Autowired
+    private TodoService todoService;
 
     @GetMapping(value = "api/tasks")
     public Iterable<Task> list(){
+
         return service.list();
     }
 
-    @PostMapping(value = "api/task")
-    public Task save(@RequestBody Task task){
-        return service.save(task);
+    @PostMapping(value = "api/task/{todoId}")
+    public Task save(@RequestBody Task task,@PathVariable("todoId") Long todoId){
+        Task savedTask =service.save(task);
+        todoService.asigarTaskToTodo(savedTask.getId(), todoId);
+        return savedTask;
     }
 
     @PutMapping(value = "api/task")
@@ -39,4 +45,7 @@ public class TaskController {
     public Task get(@PathVariable("id") Long id){
         return service.get(id);
     }
+
+
 }
+
