@@ -4,9 +4,9 @@ import co.com.sofka.crud.repositories.Todo;
 import co.com.sofka.crud.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-@RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@RestController
+
 public class TodoController {
 
     @Autowired
@@ -40,4 +40,10 @@ public class TodoController {
         return service.get(id);
     }
 
+    @PutMapping(path = "/todo/{idTodo}/rol/{idTask}")
+    public Todo asignarRolAUsuario(@PathVariable("idTodo") Long idTodo, @PathVariable("idTask") Long idTask) {
+        return this.service.asigarTaskToTodo(idTask,idTodo);
+    }
 }
+
+
