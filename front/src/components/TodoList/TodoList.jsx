@@ -62,7 +62,7 @@ const TodoList = () => {
                 return<div key={todo.name}>
                <div>
                <label>{todo.name}-{todo.id} </label>
-               <button>Eliminar</button>
+               <button onClick={()=>onDelete(todo.id)}>Eliminar</button>
                 </div>
                 <div>
                <TaskForm todoId={todo.id}/>
