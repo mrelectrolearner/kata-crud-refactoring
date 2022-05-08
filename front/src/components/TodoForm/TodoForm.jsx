@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 
 import { TodoStore } from '../../context/todoStore';
 
+
 const HOST_API = "http://localhost:8080/api";
 
 const TodoForm = () => {
@@ -9,6 +10,7 @@ const TodoForm = () => {
   const { dispatch, state: { todo } } = useContext(TodoStore);
   const item = todo.item;
   const [state, setState] = useState(item);
+  console.log(todo)
 
   const onAdd = (event) => {
     event.preventDefault();
@@ -16,7 +18,8 @@ const TodoForm = () => {
     const request = {
       name: state.name,
       id: null,
-      completed: false
+      completed: false,
+      tasks:state.tasks
     };
 
 
@@ -41,7 +44,8 @@ const TodoForm = () => {
     const request = {
       name: state.name,
       id: item.id,
-      isCompleted: item.isCompleted
+      isCompleted: item.isCompleted,
+      tasks:state.tasks
     };
 
 
@@ -60,17 +64,17 @@ const TodoForm = () => {
       });
   }
 
-  return <form ref={formRef}>
+  return <form  ref={formRef}>
     <input
       type="text"
       name="name"
-      placeholder="¿Qué piensas hacer hoy?"
+      placeholder="ToDo list"
       defaultValue={item.name}
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button onClick={onAdd}>Crear</button>}
+    {item.id && <button  onClick={onEdit}>Actualizar</button>}
+    {!item.id && <button   onClick={onAdd}>Crear</button>}
   </form>
 }
 

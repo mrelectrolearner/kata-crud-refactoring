@@ -57,20 +57,20 @@ const TodoList = () => {
     };
     return <Fragment>
         <TodoStoreProvider>
-            <div>
+            <div className='container'>
                 {currentList.map((todo) => {
-                return<div key={todo.name}>
-               <div>
-               <label>{todo.name}-{todo.id} </label>
-               <button onClick={()=>onDelete(todo.id)}>Eliminar</button>
-                </div>
-                <div>
-               <TaskForm todoId={todo.id}/>
-               <TaskList todoId={todo.id}/>
-                </div>
-                </div>
+                    return <div key={todo.name}>
+                        <div className='flex-row'>
+                            <h2 className='flex-large'>{todo.name} </h2>
+                            <button className='flex-small.one-fourth' onClick={() => onDelete(todo.id)}>Eliminar</button>
+                        </div>
+                        <div className='block'>
+                            <div className='container'><TaskForm todoId={todo.id} /></div>
+                            <div className='container'><TaskList todoId={todo.id} /></div>   
+                        </div>
+                    </div>
                 }
-                
+
 
                 )}
 

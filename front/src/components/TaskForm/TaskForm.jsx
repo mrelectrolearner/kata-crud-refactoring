@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState,useEffect } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 
 import { Store } from '../../context/Store';
 
@@ -8,11 +8,8 @@ const TaskForm = (props) => {
   const { dispatch, state: { task } } = useContext(Store);
   const item = task.item;
   const [state, setState] = useState(item);
-  const inputDefaultValue=item.name
-  
-  useEffect(() => {
-    const inputDefaultValue="aaa"
-}, [dispatch]);
+  const inputDefaultValue = item.name
+
 
   const onAdd = (event) => {
     event.preventDefault();
@@ -21,11 +18,11 @@ const TaskForm = (props) => {
       name: state.name,
       id: null,
       completed: false,
-      todoId:props.todoId
+      todoId: props.todoId
     };
 
 
-    fetch(HOST_API + "/task/"+props.todoId, {
+    fetch(HOST_API + "/task/" + props.todoId, {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -43,11 +40,12 @@ const TaskForm = (props) => {
   const onEdit = (event) => {
     event.preventDefault();
 
+
     const request = {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
-      todoId:props.todoId
+      todoId: props.todoId
     };
 
 
@@ -64,19 +62,21 @@ const TaskForm = (props) => {
         setState({ name: "" });
         formRef.current.reset();
       });
+
   }
 
-  return <form ref={formRef}>
+  return <form className='flex-row' ref={formRef}>
     <input
+      className='flex-large'
       type="text"
       name="name"
       placeholder="¿Qué piensas hacer hoy?"
-      defaultValue={inputDefaultValue}
+      defaultValue={item.name}
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
     {item.id && <button onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button onClick={onAdd}>Crear</button>}
+    {!item.id && <button  onClick={onAdd}>Crear</button>}
   </form>
 }
 

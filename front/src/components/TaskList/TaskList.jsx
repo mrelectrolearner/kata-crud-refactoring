@@ -6,7 +6,7 @@ const HOST_API = "http://localhost:8080/api";
 const TaskList = (props) => {
   const { dispatch, state: { task } } = useContext(Store);
   const currentList = task.list;
-  console.log(props.todoId)
+
 
   useEffect(() => {
     fetch(HOST_API + "/tasks")
@@ -14,7 +14,7 @@ const TaskList = (props) => {
       .then((list) => {
         dispatch({ type: "update-list", list })
       })
-      
+
   }, [dispatch]);
 
 
@@ -35,8 +35,8 @@ const TaskList = (props) => {
       name: task.name,
       id: task.id,
       completed: event.target.checked,
-      todoId:task.todoId
-      
+      todoId: task.todoId
+
     };
     fetch(HOST_API + "/task", {
       method: "PUT",
@@ -60,21 +60,21 @@ const TaskList = (props) => {
         <tr>
           <td>ID</td>
           <td>Tarea</td>
-          <td>¿Completado?</td>
+          <td><div className='vertical-center'>¿Completado?</div></td>
         </tr>
       </thead>
       <tbody>
-        { 
-        currentList.filter((task)=>{console.log(currentList); return task.todoId===props.todoId}).map((task) => {
-          console.log(task)
-          return <tr key={task.id} style={task.completed ? decorationDone : {}}>
-            <td>{task.id}</td>
-            <td>{task.name}</td>
-            <td><div><input type="checkbox" defaultChecked={task.completed} onChange={(event) => onChange(event, task)}></input></div></td>
-            <td><button onClick={() => onDelete(task.id)}>Eliminar</button></td>
-            <td><button onClick={() => onEdit(task)} disabled={task.completed}>Editar</button></td>
-          </tr>
-        })}
+        {
+          currentList.filter((task) => { return task.todoId === props.todoId }).map((task) => {
+            return <tr key={task.id} style={task.completed ? decorationDone : {}}>
+              <td>{task.id}</td>
+              <td>{task.name}</td>
+              <td><div className='vertical-center'><input  type="checkbox" defaultChecked={task.completed} onChange={(event) => onChange(event, task)}></input></div></td>
+              
+              <td><button onClick={() => onDelete(task.id)}>Eliminar</button></td>
+              <td><button onClick={() => onEdit(task)} disabled={task.completed}>Editar</button></td>
+            </tr>
+          })}
       </tbody>
     </table>
   </div>
