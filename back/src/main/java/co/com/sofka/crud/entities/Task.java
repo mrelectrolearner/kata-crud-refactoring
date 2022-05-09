@@ -1,4 +1,4 @@
-package co.com.sofka.crud.repositories;
+package co.com.sofka.crud.entities;
 
 import lombok.Data;
 

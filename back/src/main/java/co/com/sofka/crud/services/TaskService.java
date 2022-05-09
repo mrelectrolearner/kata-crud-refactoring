@@ -1,7 +1,6 @@
 package co.com.sofka.crud.services;
 
-import co.com.sofka.crud.repositories.Task;
-import co.com.sofka.crud.repositories.Todo;
+import co.com.sofka.crud.entities.Task;
 import co.com.sofka.crud.repository.TaskRepository;
 import co.com.sofka.crud.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

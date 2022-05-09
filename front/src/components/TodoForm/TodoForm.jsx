@@ -11,22 +11,15 @@ const TodoForm = () => {
   const item = todo.item;
   const [state, setState] = useState(item);
 
-
   const onAdd = (event) => {
     event.preventDefault();
-
-    
-    
-
     const request = {
       name: state.name,
       id: null,
       completed: false,
-      tasks:state.tasks
+      tasks: state.tasks
     };
 
-    
-    
     fetch(HOST_API + "/todo", {
       method: "POST",
       body: JSON.stringify(request),
@@ -39,9 +32,7 @@ const TodoForm = () => {
         dispatch({ type: "add-item", item: todo });
         setState({ name: "" });
         formRef.current.reset();
-        
       });
-    
   }
 
   const onEdit = (event) => {
@@ -51,9 +42,8 @@ const TodoForm = () => {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
-      tasks:state.tasks
+      tasks: state.tasks
     };
-
 
     fetch(HOST_API + "/todo", {
       method: "PUT",
@@ -70,7 +60,7 @@ const TodoForm = () => {
       });
   }
 
-  return <form  ref={formRef}>
+  return <form ref={formRef}>
     <input
       type="text"
       name="name"
@@ -79,9 +69,9 @@ const TodoForm = () => {
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button  onClick={state.name?onEdit:null}>Actualizar</button>}
-    {!item.id && <button   onClick={state.name?onAdd:null}>Crear</button>}
-    
+    {item.id && <button onClick={state.name ? onEdit : null}>Actualizar</button>}
+    {!item.id && <button onClick={state.name ? onAdd : null}>Crear</button>}
+
   </form>
 
 }

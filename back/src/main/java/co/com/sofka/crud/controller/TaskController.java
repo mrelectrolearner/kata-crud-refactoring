@@ -1,6 +1,6 @@
 package co.com.sofka.crud.controller;
 
-import co.com.sofka.crud.repositories.Task;
+import co.com.sofka.crud.entities.Task;
 import co.com.sofka.crud.services.TaskService;
 import co.com.sofka.crud.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class TaskController {
     @PostMapping(value = "api/task/{todoId}")
     public Task save(@RequestBody Task task,@PathVariable("todoId") Long todoId){
         Task savedTask =service.save(task);
-        todoService.asigarTaskToTodo(savedTask.getId(), todoId);
+        todoService.assignTaskToTodo(savedTask.getId(), todoId);
         return savedTask;
     }
 
