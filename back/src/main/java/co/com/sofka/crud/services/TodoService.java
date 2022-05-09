@@ -1,7 +1,7 @@
 package co.com.sofka.crud.services;
 
-import co.com.sofka.crud.repositories.Task;
-import co.com.sofka.crud.repositories.Todo;
+import co.com.sofka.crud.entities.Task;
+import co.com.sofka.crud.entities.Todo;
 import co.com.sofka.crud.repository.TaskRepository;
 import co.com.sofka.crud.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class TodoService {
          return repository.findById(id).orElseThrow();
     }
 
-    public Todo asigarTaskToTodo(Long idTask, Long idTodo){
+    public Todo assignTaskToTodo(Long idTask, Long idTodo){
         Task task=taskRepository.findById(idTask).get();
         Todo todo =repository.findById(idTodo).get();
         todo.addTask(task);
