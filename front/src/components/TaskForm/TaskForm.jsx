@@ -10,7 +10,6 @@ const TaskForm = (props) => {
   const [state, setState] = useState(item);
 
 
-
   const onAdd = (event) => {
     event.preventDefault();
 
@@ -20,7 +19,6 @@ const TaskForm = (props) => {
       completed: false,
       todoId: props.todoId
     };
-
 
     fetch(HOST_API + "/task/" + props.todoId, {
       method: "POST",
@@ -40,14 +38,12 @@ const TaskForm = (props) => {
   const onEdit = (event) => {
     event.preventDefault();
 
-
     const request = {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
       todoId: props.todoId
     };
-
 
     fetch(HOST_API + "/task", {
       method: "PUT",
@@ -75,8 +71,8 @@ const TaskForm = (props) => {
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button onClick={state.name?onEdit:null}>Actualizar</button>}
-    {!item.id && <button  onClick={state.name?onAdd:null}>Crear</button>}
+    {item.id && <button onClick={state.name ? onEdit : null}>Actualizar</button>}
+    {!item.id && <button onClick={state.name ? onAdd : null}>Crear</button>}
   </form>
 }
 

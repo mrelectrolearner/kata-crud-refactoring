@@ -11,7 +11,6 @@ const TodoForm = () => {
   const item = todo.item;
   const [state, setState] = useState(item);
 
-
   const onAdd = (event) => {
     event.preventDefault();
     const request = {

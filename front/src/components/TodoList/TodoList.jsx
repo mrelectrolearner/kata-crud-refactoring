@@ -28,9 +28,33 @@ const TodoList = () => {
         })
     };
 
+    const onEdit = (task) => {
+        dispatch({ type: "edit-item", item: task })
+    };
+
+    const onChange = (event, task) => {
+        const request = {
+            name: task.name,
+            id: task.id,
+            completed: event.target.checked
+        };
+        fetch(HOST_API + "/todo", {
+            method: "PUT",
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then((task) => {
+                dispatch({ type: "update-item", item: task });
+            });
+    };
 
 
-
+    const decorationDone = {
+        textDecoration: 'line-through'
+    };
     return <Fragment>
         <TodoStoreProvider>
             <div className='container'>
