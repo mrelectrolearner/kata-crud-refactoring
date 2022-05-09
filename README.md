@@ -4,6 +4,8 @@ https://github.com/Sofka-XT/kata-crud-refactoring
 
 Para ejecutar el proyecto es necesario crear una base de datos de mysql con nombre dbtodo, instalar los modulos mediante node para el fronted y agregar las dependencias mediante maven para el backend. Se deben modificar el usuario y la contraseña en application.properties para permitir la conection con su base de datos local.
 
+**Importante: La rama master tuvo errores al elimnar por error todos los archivos relacionados con el contexto, hasta el momento no se pudieron correjir dentro de la rama, usar la rama dev donde se pudo restaurar a un commit antes del incidente.**
+
 ## Mejoras implementadas
 Se realizaron las siguientes:
 - Se conecto con una base de datos en mysql
