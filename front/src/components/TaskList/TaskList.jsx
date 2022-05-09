@@ -72,7 +72,7 @@ const TaskList = (props) => {
               <td><div className='vertical-center'><input  type="checkbox" defaultChecked={task.completed} onChange={(event) => onChange(event, task)}></input></div></td>
               
               <td><button onClick={() => onDelete(task.id)}>Eliminar</button></td>
-              <td><button onClick={() => onEdit(task)} disabled={task.completed}>Editar</button></td>
+              <td><button className={task.completed ? 'muted-button' : 'button'} onClick={() => onEdit(task)} disabled={task.completed}>Editar</button></td>
             </tr>
           })}
       </tbody>
