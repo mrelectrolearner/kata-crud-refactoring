@@ -75,8 +75,8 @@ const TaskForm = (props) => {
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button  onClick={onAdd}>Crear</button>}
+    {item.id && <button onClick={state.name?onEdit:null}>Actualizar</button>}
+    {!item.id && <button  onClick={state.name?onAdd:null}>Crear</button>}
   </form>
 }
 

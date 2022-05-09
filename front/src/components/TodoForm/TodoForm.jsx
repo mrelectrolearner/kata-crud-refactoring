@@ -15,6 +15,9 @@ const TodoForm = () => {
   const onAdd = (event) => {
     event.preventDefault();
 
+    
+    
+
     const request = {
       name: state.name,
       id: null,
@@ -22,7 +25,8 @@ const TodoForm = () => {
       tasks:state.tasks
     };
 
-
+    
+    
     fetch(HOST_API + "/todo", {
       method: "POST",
       body: JSON.stringify(request),
@@ -35,7 +39,9 @@ const TodoForm = () => {
         dispatch({ type: "add-item", item: todo });
         setState({ name: "" });
         formRef.current.reset();
+        
       });
+    
   }
 
   const onEdit = (event) => {
@@ -73,9 +79,11 @@ const TodoForm = () => {
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button  onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button   onClick={onAdd}>Crear</button>}
+    {item.id && <button  onClick={state.name?onEdit:null}>Actualizar</button>}
+    {!item.id && <button   onClick={state.name?onAdd:null}>Crear</button>}
+    
   </form>
+
 }
 
 export { TodoForm }
