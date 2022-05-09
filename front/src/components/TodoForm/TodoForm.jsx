@@ -10,7 +10,7 @@ const TodoForm = () => {
   const { dispatch, state: { todo } } = useContext(TodoStore);
   const item = todo.item;
   const [state, setState] = useState(item);
-  console.log(todo)
+
 
   const onAdd = (event) => {
     event.preventDefault();

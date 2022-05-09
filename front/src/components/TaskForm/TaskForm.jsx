@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 
 import { Store } from '../../context/Store';
 
@@ -8,7 +8,7 @@ const TaskForm = (props) => {
   const { dispatch, state: { task } } = useContext(Store);
   const item = task.item;
   const [state, setState] = useState(item);
-  const inputDefaultValue = item.name
+
 
 
   const onAdd = (event) => {
