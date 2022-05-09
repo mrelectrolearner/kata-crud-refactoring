@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 
 import { Store } from '../../context/Store';
 
@@ -8,7 +8,6 @@ const TaskForm = (props) => {
   const { dispatch, state: { task } } = useContext(Store);
   const item = task.item;
   const [state, setState] = useState(item);
-  const inputDefaultValue = item.name
 
 
   const onAdd = (event) => {
@@ -20,7 +19,6 @@ const TaskForm = (props) => {
       completed: false,
       todoId: props.todoId
     };
-
 
     fetch(HOST_API + "/task/" + props.todoId, {
       method: "POST",
@@ -40,14 +38,12 @@ const TaskForm = (props) => {
   const onEdit = (event) => {
     event.preventDefault();
 
-
     const request = {
       name: state.name,
       id: item.id,
       isCompleted: item.isCompleted,
       todoId: props.todoId
     };
-
 
     fetch(HOST_API + "/task", {
       method: "PUT",
@@ -75,8 +71,8 @@ const TaskForm = (props) => {
       onChange={(event) => {
         setState({ ...state, name: event.target.value })
       }}  ></input>
-    {item.id && <button onClick={state.name?onEdit:null}>Actualizar</button>}
-    {!item.id && <button  onClick={state.name?onAdd:null}>Crear</button>}
+    {item.id && <button onClick={state.name ? onEdit : null}>Actualizar</button>}
+    {!item.id && <button onClick={state.name ? onAdd : null}>Crear</button>}
   </form>
 }
 

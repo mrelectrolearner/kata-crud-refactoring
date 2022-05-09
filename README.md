@@ -1,47 +1,22 @@
-# [Problema]
+# Kata crud
+Se desarrollo esta aplicacion tomando como base el código visto en https://www.youtube.com/watch?v=vqWvGgx_iXY, donde se implemento una lista de tareas (ToDo list) y fue publicado en el repositorio:
+https://github.com/Sofka-XT/kata-crud-refactoring
 
-A continuacion se presenta la solucion al reto final del ciclo de desarrollo web del trainning de sofkaU. Se partio del crud realizado en https://github.com/Sofka-XT/kata-crud-refactoring.
+Para ejecutar el proyecto es necesario crear una base de datos de mysql con nombre dbtodo, instalar los modulos mediante node para el fronted y agregar las dependencias mediante maven para el backend. Se deben modificar el usuario y la contraseña en application.properties para permitir la conection con su base de datos local.
 
-## KATA Full Stack
+## Mejoras implementadas
+Se realizaron las siguientes:
+- Se conecto con una base de datos en mysql
+- Se mejoro el estilo.
+- Se arreglo un bug en el editado de tareas.
+- Se implemento la funcionalidad de evitar que se creen todos vacios.
+- Se implemento la funcionalidad de desabilitar el boton de editado una vez que la tarea fue terminada.
 
-En el siguiente proyecto se presenta algunos conceptos de Full Stack, trabajando con Spring Boot + ReactJS.
+## video presentación
 
-### Caso de Uso
-
-Se tiene presente un formulario donde se registra unas tareas basadas en una lista por hacer. Esta lista se crea para poder tener una grupos de items donde se pueda gestionar un CRUD. Se tiene un diseño muy básico pero totalmente funcional. 
-
-#### Demo
-
-![alt text]( ./demo.gif "Demo funcional del ToDo")
- 
-### Instalación
-
-![alt text]( ./start.gif "Instalación y puesta en marcha")
-
-### Perspectiva Front-end
-Se tiene un archivo con toda la lógica, se presentan algunas malas prácticas en la codificación del mismo. Se debe refactorizar en donde se separe los componentes en archivos y se representen una mejor estructura. 
-
-Aplicar las mejores prácticas y buscar el mejor diseño para presentar los datos.
+Se presenta una breve exposicion en video del trabajo en el siguiente enlace: https://drive.google.com/file/d/13Ppe56n4bSRHtR1yFKhzR1xh7rTFH_4v/view?usp=sharing
 
 
-### Perspectiva Back-end
 
-Dentro del back-end no se tiene una base de datos basada en servidor. Se debe aplicar un buen diseño de modelo entidad relación y aplicar una base de datos como servidor, ejemplo MySQL. Representar un objeto de trasporte de datos (DTO) en vez de usar la misma entidad para responder. 
 
-### Issues
-
-- Resolver el diseño gráfico
-- Separar bien los elementos gráficos como componentes, store, reducer y providers.
-- La base de datos debe esta en un servidor como MySQL.
-- Aplicar reglas para no guardar elementos vácios.
-- Validar carácteres y demás para guardar las entidades de los TO-DO.
-- Trabajar con un objeto de trasporte de datos o un objeto plano para representa los datos ante la API.
-
-## Reto
-
-Hacer un fork en su propio namespace y presentar la solución más valida para ser discutida, argumentar los aspectos de mejora y aplicar algunas técnica de refactorización. Resolverlo de forma individual, aplicar los commit para cada paso que se realice en la refactorización. 
-
-Realizar la siguiente representación donde se tiene TO-Do List agripado en listas.
-
-![alt text]( ./todo-list-kata.gif "Demo funcional del ToDo List")
 
